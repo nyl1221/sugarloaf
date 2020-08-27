@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 0,
         name: 'base',
-        flour: 20,
+        flour: 30,
         water: 20,
         starter: 20,
         target: 56,
