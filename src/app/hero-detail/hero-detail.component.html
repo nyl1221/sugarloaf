@@ -1,12 +1,55 @@
-<div *ngIf="hero">
-  <h2>{{ hero.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{ hero.id }}</div>
+<div *ngIf="refYield">
+  <h2>Reference Yield: {{ refYield.name }}</h2>
+  <div>
+    <label>Ref starter (g): </label>
+    <input [(ngModel)]="refYield.starter" />
+  </div>
   <div>
     <label
-      >name:
-      <input [(ngModel)]="hero.name" placeholder="name" />
+      >Ref flour (g):
+      <input [(ngModel)]="refYield.flour" />
     </label>
   </div>
+  <div>
+    <label
+      >Ref water (g):
+      <input [(ngModel)]="refYield.water" />
+    </label>
+  </div>
+  <div>
+    <label
+      >Ref yield target:
+      <input [(ngModel)]="refYield.target" />
+    </label>
+  </div>
+</div>
+<div *ngIf="yield">
+  <h2>Yield Calculation</h2>
+  <div>
+    <label
+      >Target starter (g):
+      <input disabled [(ngModel)]="yield.starter" />
+    </label>
+  </div>
+  <div>
+    <label
+      >Target flour (g):
+      <input disabled [(ngModel)]="yield.flour" />
+    </label>
+  </div>
+  <div>
+    <label
+      >Target water (g):
+      <input disabled [(ngModel)]="yield.water" />
+    </label>
+  </div>
+  <div>
+    <label
+      >yield target:
+      <input [(ngModel)]="yield.target" />
+    </label>
+  </div>
+  <button (click)="calculate()">calculate</button>
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
 </div>

@@ -1,16 +1,40 @@
-<h2>My Heroes</h2>
+<h2>My Yield Targets</h2>
 <div>
-  <label
-    >Hero name:
-    <input #heroName />
-  </label>
+  <div>
+    <label
+      >Enter target name:
+      <input [(ngModel)]="newYield.name" />
+    </label>
+  </div>
+  <div>
+    <label
+      >Enter starter (g):
+      <input [(ngModel)]="newYield.starter" />
+    </label>
+  </div>
+  <div>
+    <label
+      >Enter flour (g):
+      <input [(ngModel)]="newYield.flour" />
+    </label>
+  </div>
+  <div>
+    <label
+      >Enter water (g):
+      <input [(ngModel)]="newYield.water" />
+    </label>
+  </div>
+  <div>
+    <label
+      >Enter target (g):
+      <input [(ngModel)]="newYield.target" />
+    </label>
+  </div>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value = ''">
-    add
-  </button>
+  <button (click)="add()">add</button>
 </div>
 <ul class="heroes">
-  <li *ngFor="let hero of heroes">
+  <li *ngFor="let hero of formulas">
     <a routerLink="/detail/{{ hero.id }}">
       <span class="badge">{{ hero.id }}</span> {{ hero.name }}
     </a>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { YieldCalculationService } from '../hero.service';
+import { YieldCalculation } from '../hero';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,17 +8,17 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+  heroes: YieldCalculation[] = [];
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: YieldCalculationService) {}
 
   ngOnInit() {
-    this.getHeroes();
+    this.getYieldFormulas();
   }
 
-  getHeroes(): void {
+  getYieldFormulas(): void {
     this.heroService
-      .getHeroes()
+      .getYieldFormulas()
       .subscribe((heroes) => (this.heroes = heroes.slice(1, 5)));
   }
 }
