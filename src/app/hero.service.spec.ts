@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { YieldCalculationService } from './hero.service';
+import { YieldFormulaService } from './hero.service';
 
-describe('YieldCalculationService', () => {
-  let service: YieldCalculationService;
+describe('YieldFormulaService', () => {
+  let service: YieldFormulaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(YieldCalculationService);
+    service = TestBed.inject(YieldFormulaService);
   });
 
   it('should be created', () => {

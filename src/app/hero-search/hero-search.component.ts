@@ -4,8 +4,8 @@ import { Observable, Subject } from 'rxjs';
 
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
-import { YieldCalculationService } from '../hero.service';
-import { YieldCalculation } from '../hero';
+import { YieldFormulaService } from '../hero.service';
+import { YieldFormula } from '../hero';
 
 @Component({
   selector: 'app-hero-search',
@@ -13,10 +13,10 @@ import { YieldCalculation } from '../hero';
   styleUrls: ['./hero-search.component.css'],
 })
 export class HeroSearchComponent implements OnInit {
-  heroes$: Observable<YieldCalculation[]>;
+  heroes$: Observable<YieldFormula[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private heroService: YieldCalculationService) {}
+  constructor(private heroService: YieldFormulaService) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {

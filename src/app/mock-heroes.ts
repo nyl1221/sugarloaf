@@ -1,6 +1,6 @@
-import { YieldCalculation } from './hero';
+import { YieldFormula } from './hero';
 
-export const HEROES: YieldCalculation[] = [
+export const HEROES: YieldFormula[] = [
   { id: 11, name: 'Dr Nice' },
   { id: 12, name: 'Narco' },
   { id: 13, name: 'Bombasto' },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { YieldCalculationService } from '../hero.service';
-import { YieldCalculation } from '../hero';
+import { YieldFormulaService } from '../hero.service';
+import { YieldFormula } from '../hero';
 
 @Component({
   selector: 'app-heroes',
@@ -8,14 +8,14 @@ import { YieldCalculation } from '../hero';
   styleUrls: ['./heroes.component.css'],
 })
 export class YieldFormulaComponent implements OnInit {
-  formulas: YieldCalculation[];
-  newYield: YieldCalculation;
+  formulas: YieldFormula[];
+  newYield: YieldFormula;
 
-  constructor(private heroService: YieldCalculationService) {}
+  constructor(private heroService: YieldFormulaService) {}
 
   ngOnInit() {
     this.getYieldFormulas();
-    this.newYield = new YieldCalculation();
+    this.newYield = new YieldFormula();
   }
   getYieldFormulas() {
     this.heroService
@@ -29,7 +29,7 @@ export class YieldFormulaComponent implements OnInit {
     });
   }
 
-  delete(formula: YieldCalculation): void {
+  delete(formula: YieldFormula): void {
     this.formulas = this.formulas.filter((h) => h !== formula);
     this.heroService.deleteYieldFormula(formula).subscribe();
   }

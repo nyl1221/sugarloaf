@@ -1,4 +1,4 @@
-export class YieldCalculation {
+export class YieldFormula {
   id: number;
   name: string;
   starter: number;
@@ -7,7 +7,7 @@ export class YieldCalculation {
   multiplier: number;
   target: number;
 
-  calculate(refYield: YieldCalculation) {
+  calculate(refYield: YieldFormula) {
     const ratio = this.target / refYield.target;
     this.starter = refYield.starter * ratio;
     this.flour = refYield.flour * ratio;

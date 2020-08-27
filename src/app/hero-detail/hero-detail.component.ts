@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { YieldCalculationService } from '../hero.service';
-import { YieldCalculation } from '../hero';
+import { YieldFormulaService } from '../hero.service';
+import { YieldFormula } from '../hero';
 
 @Component({
   selector: 'app-hero-detail',
@@ -11,22 +11,16 @@ import { YieldCalculation } from '../hero';
   styleUrls: ['./hero-detail.component.css'],
 })
 export class HeroDetailComponent implements OnInit {
-  refYield: YieldCalculation;
-  yield: YieldCalculation;
+  refYield: YieldFormula;
+  yield: YieldFormula;
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: YieldCalculationService,
+    private heroService: YieldFormulaService,
     private location: Location
   ) {
-    this.refYield = new YieldCalculation();
-    this.refYield.starter = 10;
-    this.refYield.flour = 20;
-    this.refYield.water = 10;
-    this.refYield.multiplier = 3;
-    this.refYield.target = 56;
-
-    this.yield = new YieldCalculation();
+    this.refYield = new YieldFormula();
+    this.yield = new YieldFormula();
   }
 
   ngOnInit(): void {

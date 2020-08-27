@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { YieldCalculationService } from '../hero.service';
-import { YieldCalculation } from '../hero';
+import { YieldFormulaService } from '../hero.service';
+import { YieldFormula } from '../hero';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +8,9 @@ import { YieldCalculation } from '../hero';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  heroes: YieldCalculation[] = [];
+  heroes: YieldFormula[] = [];
 
-  constructor(private heroService: YieldCalculationService) {}
+  constructor(private heroService: YieldFormulaService) {}
 
   ngOnInit() {
     this.getYieldFormulas();

@@ -3,10 +3,10 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { YieldCalculation } from './hero';
+import { YieldFormula } from './hero';
 
 @Injectable({ providedIn: 'root' })
-export class YieldCalculationService {
+export class YieldFormulaService {
   private yieldFormulasUrl = 'api/yieldFormulas'; // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -16,25 +16,23 @@ export class YieldCalculationService {
     private messageService: MessageService
   ) {}
 
-  getYieldFormulas(): Observable<YieldCalculation[]> {
-    return this.http.get<YieldCalculation[]>(this.yieldFormulasUrl).pipe(
+  getYieldFormulas(): Observable<YieldFormula[]> {
+    return this.http.get<YieldFormula[]>(this.yieldFormulasUrl).pipe(
       tap((_) => this.log('fetched heroes')),
-      catchError(this.handleError<YieldCalculation[]>('getYieldFormulas', []))
+      catchError(this.handleError<YieldFormula[]>('getYieldFormulas', []))
     );
   }
 
-  getFormula(id: number): Observable<YieldCalculation> {
+  getFormula(id: number): Observable<YieldFormula> {
     const url = `${this.yieldFormulasUrl}/${id}`;
-    return this.http.get<YieldCalculation>(url).pipe(
+    return this.http.get<YieldFormula>(url).pipe(
       tap((_) => this.log(`fetched hero id=${id}`)),
-      catchError(
-        this.handleError<YieldCalculation>(`getYieldCalculation id=${id}`)
-      )
+      catchError(this.handleError<YieldFormula>(`getYieldFormula id=${id}`))
     );
   }
 
   /** PUT: update the hero on the server */
-  updateYieldFormula(hero: YieldCalculation): Observable<any> {
+  updateYieldFormula(hero: YieldFormula): Observable<any> {
     return this.http.put(this.yieldFormulasUrl, hero, this.httpOptions).pipe(
       tap((_) => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateYieldFormula'))
@@ -42,53 +40,49 @@ export class YieldCalculationService {
   }
 
   /** POST: add a new hero to the server */
-  addYieldFormula(hero: YieldCalculation): Observable<YieldCalculation> {
+  addYieldFormula(hero: YieldFormula): Observable<YieldFormula> {
     return this.http
-      .post<YieldCalculation>(this.yieldFormulasUrl, hero, this.httpOptions)
+      .post<YieldFormula>(this.yieldFormulasUrl, hero, this.httpOptions)
       .pipe(
-        tap((newYieldCalculation: YieldCalculation) =>
-          this.log(`added hero w/ id=${newYieldCalculation.id}`)
+        tap((newYieldFormula: YieldFormula) =>
+          this.log(`added hero w/ id=${newYieldFormula.id}`)
         ),
-        catchError(this.handleError<YieldCalculation>('addYieldFormula'))
+        catchError(this.handleError<YieldFormula>('addYieldFormula'))
       );
   }
 
   /** DELETE: delete the hero from the server */
-  deleteYieldFormula(
-    hero: YieldCalculation | number
-  ): Observable<YieldCalculation> {
+  deleteYieldFormula(hero: YieldFormula | number): Observable<YieldFormula> {
     const id = typeof hero === 'number' ? hero : hero.id;
     const url = `${this.yieldFormulasUrl}/${id}`;
 
-    return this.http.delete<YieldCalculation>(url, this.httpOptions).pipe(
+    return this.http.delete<YieldFormula>(url, this.httpOptions).pipe(
       tap((_) => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<YieldCalculation>('deleteYieldFormula'))
+      catchError(this.handleError<YieldFormula>('deleteYieldFormula'))
     );
   }
 
   /* GET heroes whose name contains search term */
-  searchYieldFormulas(term: string): Observable<YieldCalculation[]> {
+  searchYieldFormulas(term: string): Observable<YieldFormula[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of([]);
     }
     return this.http
-      .get<YieldCalculation[]>(`${this.yieldFormulasUrl}/?name=${term}`)
+      .get<YieldFormula[]>(`${this.yieldFormulasUrl}/?name=${term}`)
       .pipe(
         tap((x) =>
           x.length
             ? this.log(`found heroes matching "${term}"`)
             : this.log(`no heroes matching "${term}"`)
         ),
-        catchError(
-          this.handleError<YieldCalculation[]>('searchYieldCalculationes', [])
-        )
+        catchError(this.handleError<YieldFormula[]>('searchYieldFormulaes', []))
       );
   }
 
-  /** Log a YieldCalculationService message with the MessageService */
+  /** Log a YieldFormulaService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`YieldCalculationService: ${message}`);
+    this.messageService.add(`YieldFormulaService: ${message}`);
   }
 
   /**
