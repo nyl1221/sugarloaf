@@ -11,6 +11,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { YieldFormulaComponent } from './heroes/heroes.component';
+import { HydrationComponent } from './hydration/hydration.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { YieldFormulaComponent } from './heroes/heroes.component';
     HeroDetailComponent,
     MessagesComponent,
     HeroSearchComponent,
+    HydrationComponent,
   ],
   bootstrap: [AppComponent],
 })

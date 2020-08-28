@@ -36,10 +36,16 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
-  save(): void {
+  update(): void {
     this.heroService
       .updateYieldFormula(this.refYield)
       .subscribe(() => this.goBack());
+  }
+
+  save(): void {
+    this.heroService.addYieldFormula(this.yield).subscribe((y) => {
+      this.yield = y;
+    });
   }
 
   calculate(): void {

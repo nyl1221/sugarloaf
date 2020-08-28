@@ -14,3 +14,12 @@ export class YieldFormula {
     this.water = refYield.water * ratio;
   }
 }
+
+export class Hydration {
+  id: number;
+  name: string;
+  refYieldId: number;
+  additionalFlourMeasurements: number[];
+  additionalWaterMeasurement: number;
+  hydrationPercentage: number;
+}

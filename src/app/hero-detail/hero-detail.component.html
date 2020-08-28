@@ -22,9 +22,18 @@
       <input [(ngModel)]="refYield.target" />
     </label>
   </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="update()">update</button>
 </div>
+
 <div *ngIf="yield">
-  <h2>Yield Calculation</h2>
+  <h2>Levain Build</h2>
+  <div>
+    <label
+      >Name (if saving):
+      <input [(ngModel)]="yield.name" />
+    </label>
+  </div>
   <div>
     <label
       >Target starter (g):
@@ -49,7 +58,10 @@
       <input [(ngModel)]="yield.target" />
     </label>
   </div>
-  <button (click)="calculate()">calculate</button>
   <button (click)="goBack()">go back</button>
+  <button (click)="calculate()">calculate</button>
   <button (click)="save()">save</button>
+  <button *ngIf="yield.id > 0">
+    <a routerLink="/hydration/{{ yield.id }}"> to hydration calculation </a>
+  </button>
 </div>
